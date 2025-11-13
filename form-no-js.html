@@ -37,7 +37,7 @@
     
     <main id="contact-form">
         <h1>Let's Connect!</h1>
-        <form action="#" method="post">
+        <form action="https://httpbin.org/post" method="post">
             <label for="name">Full name:</label>
             <input type="text" id="name" name="name" required><br>
 
@@ -49,6 +49,8 @@
 
             <label for="message">Message:</label>
             <textarea id="message" name="message" cols="60"></textarea><br>
+
+            <input type="hidden" id="possible_bot" name="possible_bot" value="true">
 
             <input type="submit">
         </form>
