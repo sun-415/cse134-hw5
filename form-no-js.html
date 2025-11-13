@@ -38,17 +38,37 @@
     <main id="contact-form">
         <h1>Let's Connect!</h1>
         <form action="https://httpbin.org/post" method="post">
-            <label for="name">Full name:</label>
-            <input type="text" id="name" name="name" required><br>
+            <form-field>
+                <label for="name">Full name:</label>
+                <input type="text" id="name" name="name" pattern="[A-Za-z]*" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
+                <output class="error" id="name-error"></output>
+                <output class="info" id="name-info">Make sure the input for the name contains only alphabetical characters.</output>
+            </form-field>
+            
+            <form-field>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
 
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" required><br>
+                <output class="error" id="email-error"></output>
+                <output class="info" id="email-info">Make sure the input matches the format for an email address.</output>
+            </form-field>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" cols="60"></textarea><br>
+            <form-field>
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" minlength="5" maxlength="20" required>
+
+                <output class="error" id="subject-error"></output>
+                <output class="info" id="subject-info">The max length for the subject is 20 characters.</output>
+            </form-field>
+
+            <form-field>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" cols="60" minlength="5"  maxlength="300"></textarea>
+
+                <output class="error" id="message-error"></output>
+                <output class="info" id="message-info">The max length for the message is 300 characters.</output>
+            </form-field>
 
             <input type="hidden" id="possible_bot" name="possible_bot" value="true">
 

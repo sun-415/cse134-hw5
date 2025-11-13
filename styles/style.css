@@ -425,6 +425,12 @@ header {
         flex-direction: column;
     }
 
+    form-field {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.6rem;
+    }
+
     /* inputs & textarea share the same look */
     input[type="text"], input[type="email"], textarea {
         width: 100%;
@@ -467,6 +473,12 @@ header {
         content: " *";
         color: #b00020;
         font-weight: 700;
+    }
+
+    .error, .info {
+        color: grey;
+        font-size: 0.8rem;
+        margin-bottom: 0.2rem;
     }
 }
 
