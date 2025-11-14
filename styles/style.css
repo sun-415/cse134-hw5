@@ -7,6 +7,7 @@
     --neutral-green4: #3F4238;
     --earthy-grey: #DAD7CD; /* base */
     --forest-green5: #111D13; /* font */
+    --error-color: #b00020;
 
     --dur-1: 150ms;
     --dur-2: 300ms;
@@ -428,7 +429,7 @@ header {
     form-field {
         display: flex;
         flex-direction: column;
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.8rem;
     }
 
     /* inputs & textarea share the same look */
@@ -453,6 +454,33 @@ header {
         box-shadow: 0 0 0 3px rgba(63,66,56,.15);
     }
 
+    form-field:has(:invalid) > label::after {
+        content: " *";
+        color: var(--error-color, red);
+        font-weight: 700;
+    }
+
+    .error, .info {
+        color: grey;
+        font-size: 0.8rem;
+        margin-top: 0.2rem;
+        line-height: 0.8rem;
+    }
+
+    .error {
+        color: var(--error-color, red);
+    }
+
+    input:invalid:not(:placeholder-shown), textarea:invalid:not(:placeholder-shown) {
+        border-color: var(--error-color, red);
+        background-color: #ffe9ed;
+    }
+
+    input:valid, textarea:valid {
+        border: 1.5px solid rgba(0,0,0,.15);
+        background: rgba(0,0,0,.05);
+    }
+
     input[type="submit"] {
         align-self: center;  
         margin-top: 0.8rem;
@@ -468,23 +496,6 @@ header {
 
     input[type="submit"]:hover {
         filter: brightness(1.2);
-    }
-
-    :has(:invalid) label::after {
-        content: " *";
-        color: #b00020;
-        font-weight: 700;
-    }
-
-    .error, .info {
-        color: grey;
-        font-size: 0.8rem;
-        margin-bottom: 0.2rem;
-        line-height: 0.8rem;
-    }
-
-    .error {
-        color: #b00020;
     }
 }
 
