@@ -35,44 +35,44 @@
         </theme-toggle>
     </header>
     
-    <main id="contact-form">
+    <main id="contact-form-body">
         <h1>Let's Connect!</h1>
         <form action="https://httpbin.org/post" method="post">
             <form-field>
                 <label for="name">Full name:</label>
                 <input type="text" id="name" name="name" pattern="^[A-Za-z]+(?:\s[A-Za-z]+)*$" placeholder="John Doe" autocomplete="name" required>
 
-                <output class="error" id="name-error">Name error message.</output>
                 <output class="info" id="name-info">Enter your name. Alphabetical characters only.</output>
+                <output class="error" id="name-error">Name error message.</output>
             </form-field>
             
             <form-field>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" placeholder="johnd@example.com" autocomplete="email" required>
 
-                <output class="error" id="email-error">Email error message.</output>
                 <output class="info" id="email-info">Enter your email.</output>
+                <output class="error" id="email-error">Email error message.</output>
             </form-field>
 
             <form-field>
                 <label for="subject">Subject:</label>
                 <input type="text" id="subject" name="subject" minlength="5" maxlength="20" placeholder="Subject" autocomplete="off" required>
 
-                <output class="error" id="subject-error">Subject error message</output>
                 <output class="info" id="subject-info">Enter the subject. Minimum number of characters is 5.</output>
+                <output class="error" id="subject-error">Subject error message</output>
             </form-field>
 
             <form-field>
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" cols="60" minlength="10"  maxlength="300" placeholder="Tell me anything..." autocomplete="off" required></textarea>
 
-                <output class="error" id="message-error">Message error message.</output>
                 <output class="info" id="message-info">Send a message! Minimum number of characters is 10.</output>
+                <output class="error" id="message-error">Message error message.</output>
             </form-field>
 
             <input type="hidden" id="possible_bot" name="possible_bot" value="true">
 
-            <input type="submit">
+            <button type="submit">Submit</button>
 
             <p>* indicates required</p>
         </form>
