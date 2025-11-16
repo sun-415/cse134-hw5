@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const form         = document.getElementById("contactForm")
     const nameInput    = document.getElementById("name");
     const emailInput   = document.getElementById("email");
     const subjectInput = document.getElementById("subject");
     const messageInput = document.getElementById("message");
+
+    const form_errors = [];
     
     // Allowed character regex for name
     const allowedChars = /^(?=.*[A-Za-z])[A-Za-z\s]*$/;
@@ -12,6 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
         errorOutput.textContent = message;
         errorOutput.classList.remove("hidden");
         input.classList.add("flash");
+
+        form_errors.push({
+            field: input.id,
+            message: message,
+            value: input.value
+        });
     
         setTimeout(() => {
             errorOutput.classList.add("hidden");
@@ -33,14 +42,17 @@ document.addEventListener("DOMContentLoaded", function () {
         emailInput.setCustomValidity("");
         if (!emailInput.checkValidity() && !emailInput.validity.valueMissing) {
             showError(emailInput, "Please use @gmail.com address only.");
+            return;
         }
 
         // Extend with a custom constraints
         if (!emailInput.value.endsWith("@gmail.com")) {
+            showError(emailInput, "Please use @gmail.com address only.");
             emailInput.setCustomValidity("Please enter an email address of @gmail.com");
         }   
     }
 
+    /* Not reaching the min or max text length for subject and message field is not an error */
     function enforceTextLength(input){
         let max = input.maxLength;
         let length = input.value.length;
@@ -66,19 +78,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Handle actual limit
-        if (length > max) {
+        if (length >= max) {
             errorOutput.textContent = "Maximum characters reached";
         } 
     }
     
     nameInput.addEventListener("input", enforceCharacterRules);
-    nameInput.addEventListener("invalid", (e) => {
-        showError(nameInput, "Please enter your name.");
-    });
-
     emailInput.addEventListener("input", enforceGmail);
     subjectInput.addEventListener("input", () => enforceTextLength(subjectInput));
     messageInput.addEventListener("input", () => enforceTextLength(messageInput));
+
+    form.addEventListener("submit", (event) => {
+        if(!form.checkValidity()){
+            event.preventDefault();
+        }
+
+        const errorsField = document.getElementById("form-errors");
+        errorsField.value = JSON.stringify(form_errors);
+    });
 
 });
 
