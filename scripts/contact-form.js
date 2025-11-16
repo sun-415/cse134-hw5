@@ -29,11 +29,27 @@ document.addEventListener("DOMContentLoaded", function () {
             event.target.value = event.target.value.replace(/[^A-Za-z\s]/g, "");
         }
     }
+
+    // Using setCustomValidity() to only allow submission of gmail users
+    function enforceGmail(){
+        // Validate with the built-in constraints
+        emailInput.setCustomValidity("");
+        if (!emailInput.validity.valid) {
+            return;
+        }
+
+        // Extend with a custom constraints
+        if (!emailInput.value.endsWith("@gmail.com")) {
+            emailInput.setCustomValidity("Please enter an email address of @gmail.com");
+        }   
+    }
     
     nameInput.addEventListener("input", enforceCharacterRules);
     nameInput.addEventListener("invalid", (e) => {
         showError(nameInput, "Please enter your name.")
     });
-    
+
+    emailInput.addEventListener("input", enforceGmail);
+
 });
 
