@@ -172,7 +172,15 @@
 
 /* Fallback for browsers that don't support MPA view transitions */
 @supports not (navigation: auto) {
- /* You could add a polyfill or alternative animation here */
+     body {
+        opacity: 0;
+        animation: basic-fade-in 0.1s ease-out forwards;
+    }
+
+    @keyframes basic-fade-in {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
 }
 
 @keyframes blur-out {
@@ -207,11 +215,8 @@
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-    background: var(--bg);
+    background: var(--bg, white);
 }
-
-
-
 
 * {
     margin: 0;
