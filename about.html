@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<script src="scripts/theme-toggle.js"></script>
     <header>
         <details class="nav">
         <summary class="hamburger"></summary>
@@ -22,6 +23,7 @@
             </ul>
         </nav>
         </details>
+
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -30,11 +32,11 @@
                 <li><a href="form-no-js.html">Contact</a></li>
             </ul>
         </nav>
+
         <theme-toggle class="no-js">
-            <button type="button"><img src="assets/sun.svg" alt="Switch to light mode" width="12" height="12"></button>
-            <button type="button"><img src="assets/moon.png" alt="Switch to dark mode" width="15" height="15"></button>
+            <button type="button" data-theme-btn="light"><img src="assets/sun.svg" alt="Switch to light mode" width="12" height="12"></button>
+            <button type="button" data-theme-btn="dark"><img src="assets/moon.png" alt="Switch to dark mode" width="15" height="15"></button>
         </theme-toggle>
-        
         <noscript>
             <p>Theme switching is not available because JavaScript is disabled. The site is shown in the default light theme.</p>
         </noscript>
