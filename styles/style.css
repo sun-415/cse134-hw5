@@ -175,41 +175,41 @@
  /* You could add a polyfill or alternative animation here */
 }
 
-@keyframes page-fade-out {
+@keyframes blur-out {
     from {
         opacity: 1;
-        transform: scale(1);
+        filter: blur(0px);
     }
     to {
         opacity: 0;
-        transform: scale(0.99); /* tiny shrink so it feels softer */
+        filter: blur(6px);
     }
 }
 
-@keyframes page-fade-in {
+@keyframes blur-in {
     from {
         opacity: 0;
-        transform: scale(1.01); /* tiny grow-in */
+        filter: blur(6px);
     }
     to {
         opacity: 1;
-        transform: scale(1);
+        filter: blur(0px);
     }
 }
 
 ::view-transition-old(root) {
-    animation: page-fade-out 0.30s var(--ease, ease-out) both;
+    animation: blur-out 0.35s ease-out both;
 }
 
 ::view-transition-new(root) {
-    animation: page-fade-in 0.30s var(--ease, ease-out) both;
+    animation: blur-in 0.35s ease-out both;
 }
 
-/* Keep background from flashing weird colors */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-    background: var(--bg, #000);
+    background: var(--bg);
 }
+
 
 
 
