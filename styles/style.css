@@ -246,28 +246,53 @@ header {
     
 }
 
+/* === THEME TOGGLE BASE === */
 theme-toggle {
-    background-color: var(--nav-footer-content, white);
+    background-color: #DAD7CD; /* slightly darker than #d2cfc6 */
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.4rem;
     margin: 2rem 4rem;
-    padding: .2rem;
+    padding: .3rem .5rem;
+    border-radius: .6rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+/* Buttons */
+theme-toggle button {
+    border: none;
+    background: transparent;
+    padding: .4rem .6rem;
     border-radius: .5rem;
     cursor: pointer;
+    transition: all 0.25s ease;
 
-    button {
-        border: none;
-        background-color: inherit;
-        padding: .4rem .5rem .2rem .6rem;
-        border-radius: .5rem;
-        cursor: pointer;
-        
-        img {
-            cursor: pointer;
-        }
+    img {
+        transition: filter 0.25s ease;
+        filter: brightness(80%); /* default dim */
+        width: 16px;
+        height: 16px;
     }
+}
+
+/* Active theme button */
+theme-toggle button.active-theme {
+    background-color: var(--nav-footer-content, gray);
+    outline: 2px solid var(--nav-footer-content, gray);
+}
+
+theme-toggle button.active-theme img {
+    filter: brightness(160%); /* brighter when active */
+}
+
+html[data-theme="light"] theme-toggle {
+    background-color: #A5A58D;
+}
+
+html[data-theme="dark"] theme-toggle {
+    background-color: #53584d; 
 }
 
 /* Hide the toggle if JS is off */
