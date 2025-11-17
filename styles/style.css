@@ -203,6 +203,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 14vh;
 
     nav {
         ul {
@@ -269,6 +270,16 @@ theme-toggle {
     }
 }
 
+/* Hide the toggle if JS is off */
+theme-toggle.no-js {
+    display: none;
+}
+
+noscript p {
+    font-size: 0.7rem;
+    width: 10rem;
+    margin-right: 1rem;
+}
 
 #landing-page {
     background-image: url("/assets/bg.png");
