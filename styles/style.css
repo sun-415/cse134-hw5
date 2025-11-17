@@ -246,9 +246,8 @@ header {
     
 }
 
-/* === THEME TOGGLE BASE === */
 theme-toggle {
-    background-color: #DAD7CD; /* slightly darker than #d2cfc6 */
+    background-color: #DAD7CD; 
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
@@ -260,7 +259,6 @@ theme-toggle {
     transition: background-color 0.25s ease;
 }
 
-/* Buttons */
 theme-toggle button {
     border: none;
     background: transparent;
@@ -271,20 +269,19 @@ theme-toggle button {
 
     img {
         transition: filter 0.25s ease;
-        filter: brightness(80%); /* default dim */
+        filter: brightness(80%);
         width: 16px;
         height: 16px;
     }
 }
 
-/* Active theme button */
 theme-toggle button.active-theme {
     background-color: var(--nav-footer-content, gray);
     outline: 2px solid var(--nav-footer-content, gray);
 }
 
 theme-toggle button.active-theme img {
-    filter: brightness(160%); /* brighter when active */
+    filter: brightness(160%);
 }
 
 html[data-theme="light"] theme-toggle {
@@ -318,6 +315,7 @@ noscript p {
     width: 100vw;
     color: inherit;
     backdrop-filter: blur(18px);
+    color: var(--bg, black);
 
     h1 {
         text-align: center;
