@@ -165,6 +165,56 @@
     }
 }
 
+/* Opt in this site to automatic cross-document view transitions */
+@view-transition {
+    navigation: auto;
+}
+
+/* Fallback for browsers that don't support MPA view transitions */
+@supports not (navigation: auto) {
+ /* You could add a polyfill or alternative animation here */
+}
+
+@keyframes fade-out-up {
+    from {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+@keyframes fade-in-down {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+::view-transition-old(root) {
+    animation: 0.5s ease-out both fade-out-up;
+}
+
+
+::view-transition-new(root) {
+    animation: 0.5s ease-out both fade-in-down; 
+}
+
+/* Optional: customize the default view transition a little bit
+  using the pseudo-elements. These selectors run only in supporting browsers.
+*/
+::view-transition-old(root), ::view-transition-new(root) {
+    /* keep background consistent while animating */
+    background: transparent;
+}
+
+
+
 * {
     margin: 0;
     padding: 0;
