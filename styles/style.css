@@ -508,13 +508,14 @@ noscript p {
         margin-bottom: 6rem;
         
         #project-cards {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
             gap: 1.2rem;
             margin-top: 1.4rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            align-items: stretch; /* make each grid item same height in its row */
         }
 
-        article {
+        /* article {
             background-color: var(--proj-card-bg, grey);
             display: flex;
             flex-direction: column;
@@ -560,7 +561,7 @@ noscript p {
                 padding: .4rem 0.3rem;
                 text-align: center;
             }
-        }
+        } */
     }
 }
 
