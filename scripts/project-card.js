@@ -158,6 +158,7 @@ function renderProjectCards(projects) {
   });
 }
 
+// Loading the project cards from local storage
 document.getElementById('load-local').addEventListener('click', () => {
   const rawJSON = localStorage.getItem(localKey);
   if (!rawJSON) {
@@ -167,4 +168,20 @@ document.getElementById('load-local').addEventListener('click', () => {
 
   const projects = JSON.parse(rawJSON); // constructs JavaScript object from JSON string
   renderProjectCards(projects); 
+});
+
+// Loading the project cards from remote server
+const remoteUrl = 'https://api.jsonbin.io/v3/b/692fe3c343b1c97be9d4698e';
+document.getElementById('load-remote').addEventListener('click', async () => {
+  try {
+    const res = await fetch(remoteUrl);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const jsonData = await res.json();
+
+    // JSONBin wraps your data; sometimes it's in json.record, sometimes json
+    const projects = Array.isArray(jsonData) ? jsonData : jsonData.record;
+    renderProjectCards(projects);
+  } catch (err) {
+    console.error(err);
+  }
 });
