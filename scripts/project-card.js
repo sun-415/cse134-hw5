@@ -92,7 +92,7 @@ customElements.define('project-card', ProjectCard);
 
 
 const localKey = 'projectCardsLocal';
-// JavaScript object literals of projectsso
+// JavaScript object literals of projects
 const localProjectObjects = [
   {
     id: 'project1',
@@ -129,7 +129,7 @@ const localProjectObjects = [
   }
 ];
 
-// Convert JavaScript object into JSON string then store in local storage
+// Convert values into JSON string then store in local storage, since can't store JS objs in there
 localStorage.setItem(localKey, JSON.stringify(localProjectObjects));
 
 
@@ -160,13 +160,13 @@ function renderProjectCards(projects) {
 
 // Loading the project cards from local storage
 document.getElementById('load-local').addEventListener('click', () => {
-  const rawJSON = localStorage.getItem(localKey);
-  if (!rawJSON) {
+  const dataStr = localStorage.getItem(localKey);
+  if (!dataStr) {
     console.warn('No local projects found');
     return;
   }
 
-  const projects = JSON.parse(rawJSON); // constructs JavaScript object from JSON string
+  const projects = JSON.parse(dataStr); // constructs JavaScript object(arr) from JSON string
   renderProjectCards(projects); 
 });
 
@@ -176,7 +176,7 @@ document.getElementById('load-remote').addEventListener('click', async () => {
   try {
     const res = await fetch(remoteUrl);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const jsonData = await res.json();
+    const jsonData = await res.json(); // already parses the JSON string into JavaScript obj
 
     // JSONBin wraps your data; sometimes it's in json.record, sometimes json
     const projects = Array.isArray(jsonData) ? jsonData : jsonData.record;

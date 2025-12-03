@@ -118,6 +118,12 @@
         gap: 1rem;
     }
 
+    #projects-content .load-controls {
+        flex-direction: column;
+        width: 90%;
+        margin-inline: auto;
+    }
+
     #project-cards {
         flex-direction: column;
     }
@@ -515,53 +521,35 @@ noscript p {
             align-items: stretch; /* make each grid item same height in its row */
         }
 
-        /* article {
-            background-color: var(--proj-card-bg, grey);
+        .load-controls {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            justify-content: start;
+            gap: 1rem;
+            margin: .5rem 0 1rem;
 
-            border-radius: 10%;
-            overflow: clip;
-
-            source, img {
-                width: 100%;
-                height: auto;
-                display: block;
+            button {
+                padding: 0.5rem 1rem;
+                border: none;
+                border-radius: 0.55rem;
+                background-color: var(--submit-button, #3F4238);
+                color: var(--submit-text, #DAD7CD);
+                font-weight: 500;
+                font-family: inherit;
+                font-size: 0.85rem;
+                cursor: pointer;
+                transition: filter 0.2s ease, transform 0.1s ease;
+                box-shadow: 0 1px 4px var(--shadow, rgba(0,0,0,0.15));
+                
             }
 
-            h3, p, ul {
-                margin: 0.2rem 0.5rem;
+            button:hover {
+                filter: brightness(1.15);
             }
 
-            h3 {
-                margin-top: 0.7rem;
+            button:active {
+                transform: scale(0.96);
             }
-
-            ul {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 0.5rem;
-                margin-top: 0.3rem;
-
-                li {
-                    background-color: var(--text-bubble, white);
-                    border: 0.1px solid var(--text-bubble, white);
-                    border-radius: 0.8rem;
-                    padding: 0.1rem 0.3rem;
-                    font-size: 0.7rem;
-                }
-            }
-
-            a, .coming-soon {
-                background-color: var(--text-bubble, white);
-                border: 0.1px solid var(--text-bubble, white);
-                border-radius: 0.4rem;
-                margin: 0.7rem 3rem 1.3rem;
-                padding: .4rem 0.3rem;
-                text-align: center;
-            }
-        } */
+        }
     }
 }
 
