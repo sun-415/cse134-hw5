@@ -1,0 +1,35 @@
+[
+  {
+    "id": "project1",
+    "title": "Mood Garden",
+    "imgSmall": "assets/fb-proj1.png",
+    "imgMedium": "assets/proj1-2.png",
+    "imgLarge": "assets/proj1.png",
+    "imgAlt": "Mood Garden Project",
+    "stack": ["HTML", "CSS", "TypeScript", "React"],
+    "details": "Mood Garden is a wellness-focused web application designed to help users track their sleep and emotional well-being through a gamified experience. The app encourages users to build healthy habits by logging their daily sleep data and self-assessments, which contribute to their virtual garden’s growth. Note: this is fetching from localStorage.",
+    "source": "https://github.com/sun-415/CSE-110-Project"
+  },
+  {
+    "id": "project2",
+    "title": "DBL Talks",
+    "imgSmall": "assets/fb-proj2.png",
+    "imgMedium": "assets/proj2-2.png",
+    "imgLarge": "assets/proj2.png",
+    "imgAlt": "DBL Talks Podcast Opening",
+    "stack": ["Synergy DBL", "DaVinci Resolve"],
+    "details": "This is the podcast of the multimodal educational materials for understanding Synergy DBL with Basic I/O and query selection on ISAM data, including updates/deletes and aggregation (COUNT/SUM/AVG). Authored scripts and live code to teach querying, sorting, grouping, and joining across files. Note: This is still work in progress so the source is not ready to be viewed yet. Note: this is fetching from localStorage.",
+    "source": null
+  },
+  {
+    "id": "project3",
+    "title": "Personal Portfolio",
+    "imgSmall": "assets/fb-proj3.png",
+    "imgMedium": "assets/proj3-2.png",
+    "imgLarge": "assets/proj3.png",
+    "imgAlt": "Elaine's Personal Portfolio",
+    "stack": ["HTML", "CSS", "JavaScript"],
+    "details": "A responsive, accessibility-minded site built with semantic HTML and modern CSS (Flexbox/Grid, variables, custom fonts, media queries). It follows progressive enhancement and supports light/dark theming with system preferences(soon). Images are optimized and typography and spacing are tuned for readability across mobile, tablet, and desktop. Note: this is fetching from localStorage.",
+    "source": "https://github.com/sun-415/cse134-hw5"
+  }
+]

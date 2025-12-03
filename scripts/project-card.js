@@ -89,3 +89,82 @@ class ProjectCard extends HTMLElement {
 
 // Register the custom element
 customElements.define('project-card', ProjectCard);
+
+
+const localKey = 'projectCardsLocal';
+// JavaScript object literals of projectsso
+const localProjectObjects = [
+  {
+    id: 'project1',
+    title: 'Mood Garden',
+    imgSmall: 'assets/fb-proj1.png',
+    imgMedium: 'assets/proj1-2.png',
+    imgLarge: 'assets/proj1.png',
+    imgAlt: 'Mood Garden Project',
+    stack: ['HTML', 'CSS', 'TypeScript', 'React'],
+    details: 'Mood Garden is a wellness-focused web application designed to help users track their sleep and emotional well-being through a gamified experience. The app encourages users to build healthy habits by logging their daily sleep data and self-assessments, which contribute to their virtual garden’s growth. Note: this is fetching from localStorage.',
+    source: 'https://github.com/sun-415/CSE-110-Project'
+  },
+  {
+    id: 'project2',
+    title: 'DBL Talks',
+    imgSmall: 'assets/fb-proj2.png',
+    imgMedium: 'assets/proj2-2.png',
+    imgLarge: 'assets/proj2.png',
+    imgAlt: 'DBL Talks Podcast Opening',
+    stack: ['Synergy DBL', 'DaVinci Resolve'],
+    details: 'This is the podcast of the multimodal educational materials for understanding Synergy DBL with Basic I/O and query selection on ISAM data, including updates/deletes and aggregation (COUNT/SUM/AVG). Authored scripts and live code to teach querying, sorting, grouping, and joining across files. Note: This is still work in progress so the source is not ready to be viewed yet. Note: this is fetching from localStorage.',
+    source: null
+  },
+    {
+    id: 'project3',
+    title: 'Personal Portfolio',
+    imgSmall: 'assets/fb-proj3.png',
+    imgMedium: 'assets/proj3-2.png',
+    imgLarge: 'assets/proj3.png',
+    imgAlt: 'Personal Portfolio by Elaine',
+    stack: ['Synergy DBL', 'DaVinci Resolve'],
+    details: 'A responsive, accessibility-minded site built with semantic HTML and modern CSS (Flexbox/Grid, variables, custom fonts, media queries). It follows progressive enhancement and supports light/dark theming with system preference. Images are optimized and typography and spacing are tuned for readability across mobile, tablet, and desktop. Note: this is fetching from localStorage.',
+    source: 'https://github.com/sun-415/cse134-hw5'
+  }
+];
+
+// Convert JavaScript object into JSON string then store in local storage
+localStorage.setItem(localKey, JSON.stringify(localProjectObjects));
+
+
+// A shared function to dump an array of project objects into <project-card> elements
+const cardsContainer = document.getElementById('project-cards');
+function renderProjectCards(projects) {
+  cardsContainer.innerHTML = ''; // clear current cards
+
+  projects.forEach(p => {
+    const card = document.createElement('project-card');
+
+    card.setAttribute('img-small', p.imgSmall);
+    card.setAttribute('img-medium', p.imgMedium);
+    card.setAttribute('img-large', p.imgLarge);
+    card.setAttribute('img-alt', p.imgAlt || '');
+    card.setAttribute('title', p.title || 'Untitled Project');
+    card.setAttribute('stack', Array.isArray(p.stack) ? p.stack.join(',') : (p.stack || ''));
+    if (p.source) {
+      card.setAttribute('source', p.source || '#');
+    }
+
+    // details text goes inside as light DOM so your component can read it
+    card.textContent = p.details || '';
+
+    cardsContainer.appendChild(card);
+  });
+}
+
+document.getElementById('load-local').addEventListener('click', () => {
+  const rawJSON = localStorage.getItem(localKey);
+  if (!rawJSON) {
+    console.warn('No local projects found');
+    return;
+  }
+
+  const projects = JSON.parse(rawJSON); // constructs JavaScript object from JSON string
+  renderProjectCards(projects); 
+});
