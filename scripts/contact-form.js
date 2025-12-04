@@ -94,6 +94,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const errorsField = document.getElementById("form-errors");
         errorsField.value = JSON.stringify(form_errors);
+
+        // Build mailto link
+        const name    = nameInput.value.trim();
+        const email   = emailInput.value.trim();
+        const subject = subjectInput.value.trim();
+        const message = messageInput.value.trim();
+
+        // Body text for the email
+        const bodyLines = [
+            `Name: ${name}`,
+            `Email: ${email}`,
+            "",
+            message
+        ];
+
+        const mailtoHref =
+            `mailto:elainesun64@gmail.com` +
+            `?subject=${encodeURIComponent(subject)}` +
+            `&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+
+        // Open the user's email client
+        event.preventDefault();        // prevent POST to httpbin when JS is on
+        window.location.href = mailtoHref;
     });
 
 });
