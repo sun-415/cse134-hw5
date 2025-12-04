@@ -132,10 +132,9 @@ const localProjectObjects = [
 // Convert values into JSON string then store in local storage, since can't store JS objs in there
 localStorage.setItem(localKey, JSON.stringify(localProjectObjects));
 
-
 // A shared function to dump an array of project objects into <project-card> elements
-const cardsContainer = document.getElementById('project-cards');
 function renderProjectCards(projects) {
+  const cardsContainer = document.getElementById('project-cards');
   cardsContainer.innerHTML = ''; // clear current cards
 
   projects.forEach(p => {
@@ -157,6 +156,10 @@ function renderProjectCards(projects) {
     cardsContainer.appendChild(card);
   });
 }
+
+// make it available globally
+window.renderProjectCards = renderProjectCards;
+window.projectCardsLocalKey = localKey;
 
 // Loading the project cards from local storage
 document.getElementById('load-local').addEventListener('click', () => {
