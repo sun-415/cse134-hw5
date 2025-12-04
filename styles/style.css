@@ -388,6 +388,10 @@ noscript p {
 
 #landing-page {
     background-image: url("/assets/bg.png");
+    background-size: cover;        /* fill screen while keeping aspect ratio */
+    background-position: center;   /* keep subject centered */
+    background-repeat: no-repeat;
+    min-height: 100vh;             /* take full viewport height */
 }
 
 /* Layout for landing page */
