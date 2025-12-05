@@ -24,6 +24,7 @@ class ProjectCard extends HTMLElement {
                     flex-direction: column;
                     justify-content: space-between;
                     height: 100%; /* each <project-card> should fill its grid cell */
+                    transition: transform 0.25s ease, box-shadow 0.25s ease;
 
                     border-radius: 10%;
                     overflow: clip;
@@ -65,6 +66,11 @@ class ProjectCard extends HTMLElement {
                         padding: .4rem 0.3rem;
                         text-align: center;
                     }
+                }
+
+                article.project-card:hover {
+                  transform: translateY(-4px);
+                  box-shadow: 0 6px 20px var(--shadow, black);
                 }
             </style>
 
